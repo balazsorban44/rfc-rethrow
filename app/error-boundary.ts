@@ -3,7 +3,7 @@
 import * as React from "react";
 
 export class ErrorBoundary extends React.Component<
-  { children: React.ReactNode; fallback: React.ReactNode },
+  { children: React.ReactNode },
   { hasError: boolean }
 > {
   constructor(props: any) {
@@ -12,7 +12,8 @@ export class ErrorBoundary extends React.Component<
   }
 
   static getDerivedStateFromError(error: unknown) {
-    // Update state so the next render will show the fallback UI.
+    console.log("Derived state from error", error);
+
     return { hasError: true };
   }
 
@@ -21,10 +22,9 @@ export class ErrorBoundary extends React.Component<
   }
 
   render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return this.props.children;
-    }
+    console.log(this.state);
+
+    if (this.state.hasError) return "Fallback!";
 
     return this.props.children;
   }
