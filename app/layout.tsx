@@ -1,5 +1,3 @@
-import { ErrorBoundary } from "./error-boundary";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,9 +5,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <ErrorBoundary>{children}</ErrorBoundary>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

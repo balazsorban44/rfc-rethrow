@@ -1,16 +1,17 @@
 "use client";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { redirect } from "next/navigation";
+import { ErrorBoundary } from "./error-boundary";
 
 export default function Home() {
   return (
     <span>
-      Home <Component />
+      <ErrorBoundary>
+        <Component />
+      </ErrorBoundary>
     </span>
   );
 }
 
 function Component(): any {
-  const s = useSearchParams();
-  if (s.has("bar")) return;
   redirect("/?bar");
 }
